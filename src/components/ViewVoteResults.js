@@ -53,11 +53,11 @@ const ViewResults = () => {
 
   return (
     <div className='container'>
-      <h2>{poll.question}</h2>
+      <h2>{poll?.question}</h2>
       <ul>
-        {poll.options.map(opt => (
+        {poll?.options?.map(opt => (
           <li key={opt.id}>
-            {opt.name} — {opt.votes ?? 0} votes (s)
+            {opt?.name} — {opt?.votes ?? 0} votes (s)
           </li>
         ))}
       </ul>

@@ -22,7 +22,9 @@ const VoteForm = () => {
 
     API.post(`/poll/${id}/vote`, { optionId: selectedOptionId })
       .then(() => setMessage('Vote cast!'))
-      .catch(() => setMessage('Vote failed.'));
+      .catch((err) => {
+        console.log(err)
+        setMessage('Vote failed.')});
   };
 
   if (!poll) return <p className='container'>Loading...</p>;

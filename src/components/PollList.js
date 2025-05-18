@@ -9,7 +9,7 @@ const PollList = () => {
   useEffect(() => {
     API.get('/poll/all')
       .then((res) => {
-        setPolls(res.data);
+        setPolls(res?.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -23,19 +23,19 @@ const PollList = () => {
   return (
     <div className="container mt-5">
       <h2>Available Polls</h2>
-      {polls.length === 0 ? (
+      {polls?.length === 0 ? (
         <p>No polls found.</p>
       ) : (
         <ul className="list-group poll-results">
-          {polls.map((poll) => (
-            <li key={poll.id} className="list-group-item">
+          {polls?.map((poll) => (
+            <li key={poll?.id} className="list-group-item">
               <div className="d-flex justify-content-between align-items-center">
-                <div>{poll.question || poll.description}</div>
+                <div>{poll?.question || poll?.description}</div>
                 <div>
-                  <Link to={`/vote/${poll.id}`} className="btn btn-sm btn-primary me-2">
+                  <Link to={`/vote/${poll?.id}`} className="btn btn-sm btn-primary me-2">
                     Vote
                   </Link>
-                  <Link to={`/results/${poll.id}`} className="btn btn-sm btn-outline-secondary">
+                  <Link to={`/results/${poll?.id}`} className="btn btn-sm btn-outline-secondary">
                     View Results
                   </Link>
                 </div>
